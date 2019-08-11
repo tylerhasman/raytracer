@@ -94,15 +94,17 @@ public class WorldRenderTask implements Runnable {
 
                 while(rayDistance < drawDistance){
 
-                    calcNextSide(rayWorldX + rayVelX * rayDistance, rayWorldZ + rayVelZ * rayDistance, rayVelX, rayVelZ, calculatedSide);
-                    rayDistance += calculatedSide.additionalDistance;
-
                     float checkX = rayWorldX + rayVelX * rayDistance;
                     float checkY = rayWorldY + rayVelY * rayDistance;
                     float checkZ = rayWorldZ + rayVelZ * rayDistance;
 
                     int tileX = (int) checkX;
                     int tileZ = (int) checkZ;
+
+                    if(calculatedSide.hitX)
+                        tileX = Math.round(checkX);
+                    else
+                        tileZ = Math.round(checkZ);
 
                     int tile = world.getTileId(tileX, tileZ);
 
@@ -162,6 +164,8 @@ public class WorldRenderTask implements Runnable {
                         break;
                     }
 
+                    calcNextSide(rayWorldX + rayVelX * rayDistance, rayWorldZ + rayVelZ * rayDistance, rayVelX, rayVelZ, calculatedSide);
+                    rayDistance += calculatedSide.additionalDistance;
 
                 }
 
@@ -210,29 +214,27 @@ public class WorldRenderTask implements Runnable {
     }
 
     private static void calcNextSide(float checkX, float checkZ, float rayVelX, float rayVelZ, CalculatedSide out) {
-
+/*
         float p_x = FastMath.fract(checkX);
-        float p_z = FastMath.fract(checkZ);
+        float p_z = FastMath.fract(checkZ);*/
 
         // d = vt
         // d/v = t
 
-        float d_x = (rayVelX > 0 ? (1F - p_x) : (0F - p_x));
-        float d_z = (rayVelZ > 0 ? (1F - p_z) : (0F - p_z));
-
-        float EPSILON = 0.0001f;
+        float d_x = (rayVelX > 0 ? (1F + (int) checkX) : (-1F + (int) checkX)) - checkX;
+        float d_z = (rayVelZ > 0 ? (1F + (int) checkZ) : (-1F + (int) checkZ)) - checkZ;
 
         if(rayVelZ == 0.0F || d_z == 0f){
             out.hitX = true;
-            out.additionalDistance = Math.abs(d_x / rayVelX) + EPSILON;
+            out.additionalDistance = Math.abs(d_x / rayVelX);
         }else  if(rayVelX == 0.0F || d_x == 0f) {
             out.hitX = false;
-            out.additionalDistance = Math.abs(d_z / rayVelZ) + EPSILON;
+            out.additionalDistance = Math.abs(d_z / rayVelZ);
         }else{
             float calcX = Math.abs(d_x / rayVelX);
             float calcZ = Math.abs(d_z / rayVelZ);
             out.hitX = calcX < calcZ;
-            out.additionalDistance = Math.min(calcX, calcZ) + EPSILON;
+            out.additionalDistance = Math.min(calcX, calcZ);
         }
 
     }
