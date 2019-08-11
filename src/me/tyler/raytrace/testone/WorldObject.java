@@ -1,4 +1,4 @@
-package me.tyler.raytrace;
+package me.tyler.raytrace.testone;
 
 public abstract class WorldObject {
 

@@ -1,4 +1,4 @@
-package me.tyler.raytrace;
+package me.tyler.raytrace.testone;
 
 public class SphereObject extends WorldObject {
 

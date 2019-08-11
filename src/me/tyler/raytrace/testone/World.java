@@ -1,4 +1,4 @@
-package me.tyler.raytrace;
+package me.tyler.raytrace.testone;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,4 +51,5 @@ public class World {
         for(WorldObject worldObject : worldObjects)
             worldObject.update(delta);
     }
+
 }

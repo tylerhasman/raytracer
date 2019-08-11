@@ -1,4 +1,6 @@
-package me.tyler.raytrace;
+package me.tyler.raytrace.testone;
+
+import me.tyler.raytrace.FastMath;
 
 import java.awt.*;
 
