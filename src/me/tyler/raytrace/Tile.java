@@ -1,4 +1,4 @@
-package me.tyler.raytrace.testone;
+package me.tyler.raytrace;
 
 public class Tile {
 
@@ -9,7 +9,6 @@ public class Tile {
     public static final Tile SKY = new Tile(2);
     public static final Tile GROUND = new Tile(3).setTextureRef("dirt");
     public static final Tile BRICKS = new Tile(4).setTextureRef("bricks");
-    public static final Tile UNKNOWN = new Tile(5).setTextureRef("dirt");
 
     private boolean solid;
 

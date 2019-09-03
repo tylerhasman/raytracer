@@ -1,4 +1,4 @@
-package me.tyler.raytrace.testone;
+package me.tyler.raytrace;
 
 public class CubeObject extends WorldObject {
 

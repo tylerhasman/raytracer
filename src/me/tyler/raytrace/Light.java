@@ -1,4 +1,4 @@
-package me.tyler.raytrace.testone;
+package me.tyler.raytrace;
 
 import javafx.scene.shape.Circle;
 

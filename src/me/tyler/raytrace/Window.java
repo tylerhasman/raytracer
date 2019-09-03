@@ -82,38 +82,36 @@ public class Window extends Canvas implements Runnable {
         int fps = 0;
         float fpsCounter = 1f;
 
-        try{
-            while(game.running && frame.isVisible()){
-                float delta = (System.currentTimeMillis() - lastUpdate) / 1000F;
-                lastUpdate = System.currentTimeMillis();
+        while(game.running && frame.isVisible()){
+            float delta = (System.currentTimeMillis() - lastUpdate) / 1000F;
+            lastUpdate = System.currentTimeMillis();
 
-                fpsCounter -= delta;
-                if(fpsCounter <= 0) {
-                    fpsCounter = 1f;
-                    this.fps = fps;
-                    fps = 0;
-                }
-                fps++;
+            fpsCounter -= delta;
+            if(fpsCounter <= 0) {
+                fpsCounter = 1f;
+                this.fps = fps;
+                fps = 0;
+            }
+            fps++;
 
-                doMouseCapture();
+            doMouseCapture();
 
-                game.update(delta);
-                clearBuffer();
+            game.update(delta);
+            clearBuffer();
 
-                game.render(buffer.getGraphics());
+            game.render(buffer.getGraphics());
 
-                buffer.getGraphics().drawString("FPS: "+this.fps, 5, 20);
+            buffer.getGraphics().drawString("FPS: "+this.fps, 5, 20);
 
-                getGraphics().drawImage(buffer, 0, 0, null);
+            getGraphics().drawImage(buffer, 0, 0, null);
 
-                long sleepTime = (1000 / targetFPS) - (System.currentTimeMillis() - lastUpdate);
-
-                if(sleepTime > 0){
-                    Thread.sleep(sleepTime);
+            if(System.currentTimeMillis() - lastUpdate < (1000 / targetFPS)){
+                try {
+                    Thread.sleep((1000 / targetFPS) - (System.currentTimeMillis() - lastUpdate));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
-        }catch(Exception e){
-            e.printStackTrace();
         }
         frame.dispose();
 

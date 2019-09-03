@@ -1,7 +1,4 @@
-package me.tyler.raytrace.testone;
-
-import me.tyler.raytrace.Game;
-import me.tyler.raytrace.Input;
+package me.tyler.raytrace;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -12,10 +9,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
+import java.util.concurrent.Executor;
 import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class RaytraceGame extends Game {
+public class RaytraceGame extends Game{
 
     private World world;
 
@@ -71,15 +71,15 @@ public class RaytraceGame extends Game {
         cameraX = 2.5f;
         cameraY = 0.5f;
         cameraZ = 2.5f;
-        cameraBuffer = new BufferedImage(720, 720, BufferedImage.TYPE_INT_RGB);
-        drawDistance = 15f;
+        cameraBuffer = new BufferedImage(100, 80, BufferedImage.TYPE_INT_RGB);
+        drawDistance = 10f;
         cameraYaw = 0;//degrees
         cameraPitch = 0;//degrees
         fov = 90f;
 
         int widthThreads = 2;
         int heightThreads = 2;
-        forkJoinPool = ForkJoinPool.commonPool();
+        forkJoinPool = new ForkJoinPool(Runtime.getRuntime().availableProcessors());
         worldRenderTasks = new ArrayList<>();
         for(int i = 0; i < widthThreads;i++){
             for(int j = 0; j < heightThreads;j++){
@@ -117,11 +117,7 @@ public class RaytraceGame extends Game {
         g.setColor(Color.RED);
         g.fillRect(50, 50, 50, 50);
 
-        long time = System.currentTimeMillis();
-
         renderCamera();
-
-        time = System.currentTimeMillis() - time;
 
         g.drawImage(cameraBuffer, 0, 0, getWindow().getWidth(), getWindow().getHeight(), null);
 
@@ -132,8 +128,7 @@ public class RaytraceGame extends Game {
 
         g.setColor(Color.WHITE);
         g.drawString(cameraX+"/"+cameraZ, 5, 30);
-        g.drawString(cameraYaw+"/"+cameraPitch, 5, 43);
-        g.drawString("frameTime "+time+"ms", 5, 55);
+        g.drawString(cameraYaw+"/"+cameraPitch, 5, 45);
     }
 
     @Override
@@ -182,6 +177,10 @@ public class RaytraceGame extends Game {
         if(world.getTileId((int)cameraX, (int) checkZ) == 0){
             cameraZ = checkZ;
         }
+
+        /*if(Input.isPressed(KeyEvent.VK_SPACE)){
+            world.addObject(new Bullet(cameraX, cameraZ, cameraYaw));
+        }*/
 
         float deltaX = Input.getDeltaX();
         float deltaY = Input.getDeltaY();
