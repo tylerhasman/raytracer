@@ -28,8 +28,8 @@
       <file leaf-file-name="Window.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/me/tyler/raytrace/Window.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
+            <state relative-caret-position="3">
+              <caret line="87" column="56" lean-forward="true" selection-start-line="87" selection-start-column="56" selection-end-line="87" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -37,19 +37,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Start.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/me/tyler/raytrace/Start.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="26" selection-start-column="26" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/me/tyler/raytrace/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state relative-caret-position="286">
               <caret line="20" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="e#355#356#0" expanded="true" />
@@ -59,28 +50,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WorldRenderTask.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WorldRenderTask.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/me/tyler/raytrace/testone/WorldRenderTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3825">
-              <caret line="231" column="28" lean-forward="true" selection-start-line="231" selection-start-column="28" selection-end-line="231" selection-end-column="28" />
+            <state relative-caret-position="106">
+              <caret line="108" column="22" selection-start-line="108" selection-start-column="20" selection-end-line="115" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FastMath.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/me/tyler/raytrace/FastMath.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
-              <folding>
-                <element signature="e#261#262#0" expanded="true" />
-                <element signature="e#339#340#0" expanded="true" />
-                <element signature="e#386#387#0" expanded="true" />
-                <element signature="e#436#437#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -89,8 +65,8 @@
       <file leaf-file-name="World.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/me/tyler/raytrace/testone/World.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+            <state relative-caret-position="354">
+              <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -98,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RaytraceGame.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RaytraceGame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/me/tyler/raytrace/testone/RaytraceGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="77" column="16" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
+            <state relative-caret-position="252">
+              <caret line="184" selection-start-line="184" selection-end-line="184" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -132,9 +108,9 @@
       <find>isTouc</find>
       <find>contains</find>
       <find>sin</find>
-      <find>dst =</find>
+      <find />
       <find>git</find>
-      <find>common =</find>
+      <find />
       <find>drawDis</find>
       <find>floor</find>
       <find>println</find>
@@ -170,13 +146,13 @@
         <option value="$PROJECT_DIR$/src/me/tyler/raytrace/RaytraceGame.java" />
         <option value="$PROJECT_DIR$/src/me/tyler/raytrace/WorldRenderTask.java" />
         <option value="$PROJECT_DIR$/src/me/tyler/raytrace/testtwo/RaytraceTwo.java" />
-        <option value="$PROJECT_DIR$/src/me/tyler/raytrace/testone/Tile.java" />
-        <option value="$PROJECT_DIR$/src/me/tyler/raytrace/testone/World.java" />
-        <option value="$PROJECT_DIR$/src/me/tyler/raytrace/FastMath.java" />
-        <option value="$PROJECT_DIR$/src/me/tyler/raytrace/Window.java" />
         <option value="$PROJECT_DIR$/src/me/tyler/raytrace/Start.java" />
-        <option value="$PROJECT_DIR$/src/me/tyler/raytrace/testone/WorldRenderTask.java" />
+        <option value="$PROJECT_DIR$/src/me/tyler/raytrace/Window.java" />
+        <option value="$PROJECT_DIR$/src/me/tyler/raytrace/testone/Tile.java" />
+        <option value="$PROJECT_DIR$/src/me/tyler/raytrace/FastMath.java" />
+        <option value="$PROJECT_DIR$/src/me/tyler/raytrace/testone/World.java" />
         <option value="$PROJECT_DIR$/src/me/tyler/raytrace/testone/RaytraceGame.java" />
+        <option value="$PROJECT_DIR$/src/me/tyler/raytrace/testone/WorldRenderTask.java" />
       </list>
     </option>
   </component>
@@ -189,11 +165,11 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="488" />
-    <option name="y" value="-32" />
-    <option name="width" value="1300" />
-    <option name="height" value="1038" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="677" />
+    <option name="y" value="78" />
+    <option name="width" value="1120" />
+    <option name="height" value="1045" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -360,21 +336,20 @@
       <workItem from="1565337944560" duration="4014000" />
       <workItem from="1565349078982" duration="3050000" />
       <workItem from="1565364995216" duration="11904000" />
-      <workItem from="1565502777381" duration="8493000" />
-      <workItem from="1565541803047" duration="1421000" />
+      <workItem from="1565502777381" duration="7977000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59770000" />
+    <option name="totallyTimeSpent" value="57833000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="502" y="0" width="1040" height="830" extended-state="0" />
+    <frame x="530" y="37" width="896" height="836" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="5" />
       <window_info anchor="bottom" id="TODO" order="11" />
-      <window_info anchor="bottom" id="Messages" order="4" weight="0.32413793" />
+      <window_info anchor="bottom" id="Messages" order="4" weight="0.32551724" />
       <window_info anchor="right" id="Palette&#9;" order="1" />
       <window_info id="Image Layers" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
@@ -382,7 +357,7 @@
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="3" />
-      <window_info anchor="bottom" id="Run" order="7" weight="0.40275863" />
+      <window_info anchor="bottom" id="Run" order="7" weight="0.40387276" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32965517" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
@@ -393,46 +368,15 @@
       <window_info id="UI Designer" order="1" />
       <window_info anchor="right" id="Theme Preview" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="8" visible="true" weight="0.28451884" />
+      <window_info active="true" anchor="bottom" id="Debug" order="8" visible="true" weight="0.2821577" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="5" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="7" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="7" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Find" order="6" />
       <window_info anchor="right" id="Coverage" order="6" side_tool="true" weight="0.3294271" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="5" />
     </layout>
-    <layout-to-restore>
-      <window_info anchor="right" id="Palette" order="5" />
-      <window_info anchor="bottom" id="Version Control" order="3" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
-      <window_info anchor="right" id="Capture Analysis" order="0" />
-      <window_info anchor="bottom" id="Run" order="7" weight="0.40275863" />
-      <window_info anchor="right" id="Theme Preview" order="2" />
-      <window_info active="true" anchor="bottom" id="Messages" order="4" visible="true" weight="0.3250346" />
-      <window_info content_ui="combo" id="Project" order="5" weight="0.5124717" />
-      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="7" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="8" weight="0.25" />
-      <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="TODO" order="11" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="Designer" order="0" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="UI Designer" order="1" />
-      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
-      <window_info anchor="bottom" id="Debug" order="8" weight="0.2821577" />
-      <window_info anchor="right" id="Palette&#9;" order="1" />
-      <window_info anchor="right" id="Coverage" order="6" side_tool="true" weight="0.3294271" />
-      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="6" />
-      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="1" weight="0.32965517" />
-      <window_info anchor="bottom" id="Message" order="5" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -442,7 +386,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="49" />
+      <option name="time" value="47" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -784,13 +728,11 @@
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/lang/Math.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="234" column="25" selection-start-line="234" selection-start-column="25" selection-end-line="234" selection-end-column="25" />
+        <state relative-caret-position="748">
+          <caret line="1883" column="25" selection-start-line="1883" selection-start-column="25" selection-end-line="1883" selection-end-column="25" />
           <folding>
             <element signature="e#8525#8526#0" expanded="true" />
             <element signature="e#8607#8608#0" expanded="true" />
-            <element signature="e#9016#9017#0" expanded="true" />
-            <element signature="e#9058#9059#0" expanded="true" />
             <element signature="e#17181#17182#0" expanded="true" />
             <element signature="e#17264#17265#0" expanded="true" />
             <element signature="e#47714#47715#0" expanded="true" />
@@ -799,36 +741,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/tyler/raytrace/Window.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/me/tyler/raytrace/Start.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="26" selection-start-column="26" selection-end-column="26" />
+        <state relative-caret-position="153">
+          <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/tyler/raytrace/testone/World.java">
+    <entry file="file://$PROJECT_DIR$/src/me/tyler/raytrace/FastMath.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+        <state relative-caret-position="204">
+          <caret line="15" column="41" lean-forward="true" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#261#262#0" expanded="true" />
+            <element signature="e#339#340#0" expanded="true" />
+            <element signature="e#386#387#0" expanded="true" />
+            <element signature="e#407#408#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/tyler/raytrace/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
+        <state relative-caret-position="286">
           <caret line="20" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="e#355#356#0" expanded="true" />
@@ -837,23 +772,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/tyler/raytrace/FastMath.java">
+    <entry file="file://$PROJECT_DIR$/src/me/tyler/raytrace/Window.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="e#261#262#0" expanded="true" />
-            <element signature="e#339#340#0" expanded="true" />
-            <element signature="e#386#387#0" expanded="true" />
-            <element signature="e#436#437#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/tyler/raytrace/testone/WorldRenderTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3825">
-          <caret line="231" column="28" lean-forward="true" selection-start-line="231" selection-start-column="28" selection-end-line="231" selection-end-column="28" />
+        <state relative-caret-position="3">
+          <caret line="87" column="56" lean-forward="true" selection-start-line="87" selection-start-column="56" selection-end-line="87" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -862,8 +784,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/tyler/raytrace/testone/RaytraceGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="77" column="16" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
+        <state relative-caret-position="252">
+          <caret line="184" selection-start-line="184" selection-end-line="184" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/tyler/raytrace/testone/World.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/tyler/raytrace/testone/WorldRenderTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="108" column="22" selection-start-line="108" selection-start-column="20" selection-end-line="115" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
