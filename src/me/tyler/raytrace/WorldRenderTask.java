@@ -60,13 +60,11 @@ public class WorldRenderTask implements Runnable {
     @Override
     public void run() {
 
-        float horizontalInfluence = 1f; // FastMath.cos(FastMath.toRadians(0.5f * (fov / 2f) + cameraPitch));
+        float startRayVelX = FastMath.cos(FastMath.toRadians(cameraYaw + fov * (0.5f - sectionX / totalWidth)));
+        float finishRayVelX = FastMath.cos((FastMath.toRadians(cameraYaw + fov * (0.5f - (sectionX + section.getWidth() - 1) / totalWidth))));
 
-        float startRayVelX = FastMath.cos(FastMath.toRadians(cameraYaw + fov * (0.5f - sectionX / totalWidth))) * horizontalInfluence;
-        float finishRayVelX = FastMath.cos((FastMath.toRadians(cameraYaw + fov * (0.5f - (sectionX + section.getWidth() - 1) / totalWidth)))) * horizontalInfluence;
-
-        float startRayVelZ = FastMath.sin(FastMath.toRadians(cameraYaw + fov * (0.5f - sectionX / totalWidth)))* horizontalInfluence;
-        float finishRayVelZ = FastMath.sin((FastMath.toRadians(cameraYaw + fov * (0.5f - (sectionX + section.getWidth() - 1) / totalWidth))))* horizontalInfluence;
+        float startRayVelZ = FastMath.sin(FastMath.toRadians(cameraYaw + fov * (0.5f - sectionX / totalWidth)));
+        float finishRayVelZ = FastMath.sin((FastMath.toRadians(cameraYaw + fov * (0.5f - (sectionX + section.getWidth() - 1) / totalWidth))));
 
         float startRayVelY = FastMath.sin(FastMath.toRadians((0.5f - sectionY / totalHeight) * (fov / 2f) + cameraPitch));
         float finishRayVelY = FastMath.sin((FastMath.toRadians((0.5f - (sectionY + section.getHeight() - 1) / totalHeight) * (fov / 2f) + cameraPitch)));
@@ -95,26 +93,28 @@ public class WorldRenderTask implements Runnable {
 
                 float hitX = 0, hitY = 0, hitZ = 0;
 
-                for(float f = 0f; f < drawDistance;f += 0.025f){
+                while(dst < drawDistance){
 
-                    hitX = rayVelX * f + rayWorldX;
-                    hitY = rayVelY * f + rayWorldY;
-                    hitZ = rayVelZ * f + rayWorldZ;
+                    hitX = rayVelX * dst + rayWorldX;
+                    hitY = rayVelY * dst + rayWorldY;
+                    hitZ = rayVelZ * dst + rayWorldZ;
 
-                    dst = f;
+                    dst += 0.025f;
 
                     if(hitY >= 1f && rayWorldY < 1F){
                         hitTile = Tile.SKY.getId();
-                        break;
-                    }else if(hitY <= 0){
+                    }else if(hitY <= 0 && rayWorldY > 0f){
                         hitTile = Tile.GROUND.getId();
-                        break;
+                        hitY = 0f;
                     }
 
                     int tile = world.getTileId((int)hitX, (int) hitZ);
 
-                    if(tile != 0 && hitY > 0 && hitY < 1){
+                    if(tile != 0 && hitY >= -0.05f && hitY <= 1.05){
                         hitTile = Tile.BRICKS.getId();
+                    }
+
+                    if(hitTile != 0){
                         break;
                     }
 
@@ -131,7 +131,7 @@ public class WorldRenderTask implements Runnable {
                     float xCoord = 0f;
                     float yCoord = 0f;
 
-                    if(hitY <= 0F || hitY >= 1F){//Ground / Sky
+                    if(hitY <= 0F || hitY >= 1){//Ground / Sky
                         xCoord = FastMath.fract(hitX);
                         yCoord = FastMath.fract(hitZ);
                     }else{//An actual tile
@@ -167,6 +167,11 @@ public class WorldRenderTask implements Runnable {
             }
         }
         section.getRaster().setDataElements(0, 0, section.getWidth(), section.getHeight(), pixelData);
+    }
+
+    private static float dstUntilNextTile(float velX, float velZ, float x, float z){
+
+        return 0.5f;
     }
 
 }
