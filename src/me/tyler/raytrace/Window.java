@@ -34,7 +34,7 @@ public class Window extends Canvas implements Runnable {
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         buffer = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         this.game = game;
-        targetFPS = 30;
+        targetFPS = 60;
         captureMouse = true;
         releasingMouse = true;
         addKeyListener(Input.instance());

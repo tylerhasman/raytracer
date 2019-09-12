@@ -59,136 +59,107 @@ public class WorldRenderTask implements Runnable {
 
     @Override
     public void run() {
+
+        float horizontalInfluence = 1f; // FastMath.cos(FastMath.toRadians(0.5f * (fov / 2f) + cameraPitch));
+
+        float startRayVelX = FastMath.cos(FastMath.toRadians(cameraYaw + fov * (0.5f - sectionX / totalWidth))) * horizontalInfluence;
+        float finishRayVelX = FastMath.cos((FastMath.toRadians(cameraYaw + fov * (0.5f - (sectionX + section.getWidth() - 1) / totalWidth)))) * horizontalInfluence;
+
+        float startRayVelZ = FastMath.sin(FastMath.toRadians(cameraYaw + fov * (0.5f - sectionX / totalWidth)))* horizontalInfluence;
+        float finishRayVelZ = FastMath.sin((FastMath.toRadians(cameraYaw + fov * (0.5f - (sectionX + section.getWidth() - 1) / totalWidth))))* horizontalInfluence;
+
+        float startRayVelY = FastMath.sin(FastMath.toRadians((0.5f - sectionY / totalHeight) * (fov / 2f) + cameraPitch));
+        float finishRayVelY = FastMath.sin((FastMath.toRadians((0.5f - (sectionY + section.getHeight() - 1) / totalHeight) * (fov / 2f) + cameraPitch)));
+
         for(float i = sectionX; i < section.getWidth() + sectionX;i++){
 
-            float rayScreenX = 0.5f - i / totalWidth;
+            float rayScreenX = i / totalWidth;
 
-            float rayScreenXFov = (rayScreenX * fov);
+            float rayVelX = rayScreenX * (finishRayVelX - startRayVelX) + startRayVelX;
+            float rayVelZ = rayScreenX * (finishRayVelZ - startRayVelZ) + startRayVelZ;
 
-            float rayVelX = FastMath.cos((float) Math.toRadians((rayScreenXFov + cameraYaw)));
-            float rayVelZ = FastMath.sin((float) Math.toRadians((rayScreenXFov + cameraYaw)));
-
-            float rayWorldX = (rayScreenX / fov) + cameraX;
-            float rayWorldZ = (rayScreenX / fov) + cameraZ;
+            float rayWorldX = cameraX;
+            float rayWorldZ = cameraZ;
 
             for(float j = sectionY; j < section.getHeight() + sectionY;j++){
 
-                float rayScreenY = 0.5f - j / totalHeight;
+                float rayScreenY = j / totalHeight;
 
-                float rayWorldY = (rayScreenY / fov) + cameraY;
+                float rayWorldY = cameraY;
 
-                float rayVelY = FastMath.sin((float) Math.toRadians((rayScreenY * 45f + cameraPitch)));
+                float rayVelY = rayScreenY * (finishRayVelY - startRayVelY) + startRayVelY;
 
-                Tile seenTile = null;
-                float hitRayProjX = 0.5f;
-                float hitRayProjY = 0.5f;
-                WorldObject seenObject = null;
+                int hitTile = 0;
 
-                final float accuracy = 50f;
+                float dst = 0f;
 
-                float k;
+                float hitX = 0, hitY = 0, hitZ = 0;
 
-                float lightR = 0, lightG = 0, lightB = 0;
+                for(float f = 0f; f < drawDistance;f += 0.025f){
 
-                for(k = accuracy / 2f; k < drawDistance * accuracy;k++){
+                    hitX = rayVelX * f + rayWorldX;
+                    hitY = rayVelY * f + rayWorldY;
+                    hitZ = rayVelZ * f + rayWorldZ;
 
-                    float checkX = rayWorldX + rayVelX * k / accuracy;
-                    float checkY = rayWorldY + rayVelY * k / accuracy;
-                    float checkZ = rayWorldZ + rayVelZ * k / accuracy;
+                    dst = f;
 
-                    for(Light light : world.getLights()){
-                        float dst = light.dst(checkX, checkZ);
-                        if(dst <= light.size){
-                            lightR += (light.r * light.intensity * (1f - dst / light.size)) / accuracy;
-                            lightG += (light.g * light.intensity * (1f - dst / light.size)) / accuracy;
-                            lightB += (light.b * light.intensity * (1f - dst / light.size)) / accuracy;
-                        }
-                    }
-
-                    int tile = world.getTileId((int) checkX, (int) checkZ);
-
-                    if(checkY > 1F){
-                        if(rayWorldY < 1F)
-                            tile = Tile.SKY.getId();
-                        else
-                            continue;
-                    }else if(checkY < 0F)
-                        if(rayWorldY > 0F)
-                            tile = Tile.GROUND.getId();
-                        else
-                            continue;
-
-                    for(WorldObject worldObject : world.getWorldObjects()){
-                        if(worldObject.intersects(checkX, checkY, checkZ)){
-                            seenObject = worldObject;
-                            break;
-                        }
-                    }
-
-                    if(seenObject != null)
+                    if(hitY >= 1f && rayWorldY < 1F){
+                        hitTile = Tile.SKY.getId();
                         break;
+                    }else if(hitY <= 0){
+                        hitTile = Tile.GROUND.getId();
+                        break;
+                    }
 
-                    if(tile != 0) {
-                        seenTile = Tile.TILES[tile];
+                    int tile = world.getTileId((int)hitX, (int) hitZ);
 
-                        hitRayProjY = (float) (checkY - Math.floor(checkY));
-
-                        float fractX = (float) (checkX - Math.floor(checkX));
-                        float fractZ = (float) (checkZ - Math.floor(checkZ));
-
-                        hitRayProjX = fractX;
-
-                        if(fractX < 0.02f){
-                            hitRayProjX = fractZ;
-                        }else if(fractZ < 0.02f){
-                            hitRayProjX = fractX;
-                        }
-
-                        if(fractX >= 0.98f){
-                            hitRayProjX = fractZ;
-                        }else if(fractZ >= 0.98f){
-                            hitRayProjX = fractX;
-                        }
-
+                    if(tile != 0 && hitY > 0 && hitY < 1){
+                        hitTile = Tile.BRICKS.getId();
                         break;
                     }
 
                 }
 
-                float dstX = rayVelX * k / accuracy;
-                float dstZ = rayVelZ * k / accuracy;
+                int r = 0, g = 0, b = 0;
 
-                float dst = (float) (1f - Math.min(1f, Math.sqrt(dstX * dstX + dstZ * dstZ) / drawDistance)) / 2f;
+                Tile tile = Tile.TILES[hitTile];
 
-                int drawnColor = 0x000000;
+                BufferedImage image = raytraceGame.getTextures().get(tile.getTextureRef());
 
-                if(seenObject != null) {
-                    drawnColor = seenObject.color;
-                }else if(seenTile == null){
-                    drawnColor = Color.LIGHT_GRAY.getRGB();
-                }else if(seenTile.equals(Tile.SKY)) {
-                    drawnColor = 0x51B6FF;
-                }else if(seenTile.equals(Tile.GROUND)) {
-                    drawnColor = 0xB29400;
-                }else{
-                    BufferedImage texture = raytraceGame.getTextures().get(seenTile.getTextureRef());
-                    if(texture != null){
-                        drawnColor = texture.getRGB((int) (hitRayProjX * texture.getWidth()), (int) (hitRayProjY * texture.getHeight()));
+                if(image != null){
+
+                    float xCoord = 0f;
+                    float yCoord = 0f;
+
+                    if(hitY <= 0F || hitY >= 1F){//Ground / Sky
+                        xCoord = FastMath.fract(hitX);
+                        yCoord = FastMath.fract(hitZ);
+                    }else{//An actual tile
+
+                        yCoord = FastMath.fract(hitY);
+                        float fractX = FastMath.fract(hitX);
+                        float fractZ = FastMath.fract(hitZ);
+
+                        if(fractX <= 0.1f || fractX >= 0.9){
+                            xCoord = fractZ;
+                        }
+
+                        if(fractZ <= 0.1f || fractZ >= 0.9f){
+                            xCoord = fractX;
+                        }
+
                     }
-                    //drawnColor = new Color(hitRayProjX, 0, 0, 1f).getRGB();
+
+                    int rgb = image.getRGB((int) (xCoord * image.getWidth()), (int) (yCoord * image.getHeight()));
+
+                    r = (rgb >> 16) & 0xFF;
+                    g = (rgb >> 8) & 0xFF;
+                    b = rgb & 0xFF;
                 }
 
-                int r = (drawnColor >> 16) & 0xFF;
-                int g = (drawnColor >> 8) & 0xFF;
-                int b = (drawnColor) & 0xFF;
-
-                r *= dst / 2f;
-                g *= dst / 2f;
-                b *= dst / 2f;
-
-                r += lightR;
-                g += lightG;
-                b += lightB;
+                r *= (1f - (dst / drawDistance)) * 0.7f;
+                g *= (1f - (dst / drawDistance)) * 0.7f;
+                b *= (1f - (dst / drawDistance)) * 0.7f;
 
                 int packed = ((r & 0xFF) << 16) | ((g & 0xFF) << 8)  | ((b & 0xFF));
 

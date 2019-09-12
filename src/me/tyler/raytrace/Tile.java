@@ -6,7 +6,7 @@ public class Tile {
 
     public static final Tile AIR = new Tile(0);
     public static final Tile DIRT = new Tile(1).setSolid(true).setTextureRef("dirt");
-    public static final Tile SKY = new Tile(2);
+    public static final Tile SKY = new Tile(2).setTextureRef("sky");
     public static final Tile GROUND = new Tile(3).setTextureRef("dirt");
     public static final Tile BRICKS = new Tile(4).setTextureRef("bricks");
 

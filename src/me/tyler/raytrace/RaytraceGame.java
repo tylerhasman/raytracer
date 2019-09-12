@@ -9,10 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class RaytraceGame extends Game{
@@ -40,6 +37,7 @@ public class RaytraceGame extends Game{
             textures.put("dirt", ImageIO.read(new File("assets/dirt.png")));
             textures.put("bricks", ImageIO.read(new File("assets/bricks.png")));
             textures.put("map", ImageIO.read(new File("assets/map.png")));
+            textures.put("sky", ImageIO.read(new File("assets/sky3.jpg")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -59,7 +57,7 @@ public class RaytraceGame extends Game{
                 }else if(rgb == 0xFFFFFF) {
                     world.setTileId(i, j, Tile.AIR.getId());
                 }else if(color.getRed() == 255 && color.getBlue() == 0 && color.getGreen() == 0){
-                    world.addObject(new CubeObject(i, 0, j, rgb, 1f, 0.5f, 1f));
+                    world.addObject(new CubeObject(i, 0, j, rgb, 1f, 0.25f, 1f));
                 }else{
                     world.addLight(new Light(i + 0.5f, j + 0.5f, 30f, 2f, color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f));
                 }
@@ -71,15 +69,15 @@ public class RaytraceGame extends Game{
         cameraX = 2.5f;
         cameraY = 0.5f;
         cameraZ = 2.5f;
-        cameraBuffer = new BufferedImage(100, 80, BufferedImage.TYPE_INT_RGB);
+        cameraBuffer = new BufferedImage(128, 128, BufferedImage.TYPE_INT_RGB);
         drawDistance = 10f;
         cameraYaw = 0;//degrees
         cameraPitch = 0;//degrees
         fov = 90f;
 
-        int widthThreads = 2;
-        int heightThreads = 2;
-        forkJoinPool = new ForkJoinPool(Runtime.getRuntime().availableProcessors());
+        int widthThreads = 1;
+        int heightThreads = 1;
+        forkJoinPool = ForkJoinPool.commonPool();
         worldRenderTasks = new ArrayList<>();
         for(int i = 0; i < widthThreads;i++){
             for(int j = 0; j < heightThreads;j++){
@@ -178,9 +176,13 @@ public class RaytraceGame extends Game{
             cameraZ = checkZ;
         }
 
-        /*if(Input.isPressed(KeyEvent.VK_SPACE)){
-            world.addObject(new Bullet(cameraX, cameraZ, cameraYaw));
-        }*/
+        if(Input.isPressed(KeyEvent.VK_SPACE)){
+            cameraY += delta * 1f;
+        }
+
+        if(Input.isPressed(KeyEvent.VK_SHIFT)){
+            cameraY -= delta * 1f;
+        }
 
         float deltaX = Input.getDeltaX();
         float deltaY = Input.getDeltaY();
@@ -188,10 +190,10 @@ public class RaytraceGame extends Game{
         cameraPitch += deltaY / 6f;
         cameraYaw += deltaX / 6f;
 
-        if(cameraPitch <= -60)
+        /*if(cameraPitch <= -60)
             cameraPitch = -60;
         if(cameraPitch > 60)
-            cameraPitch = 60;
+            cameraPitch = 60;*/
 
         cameraLight.x = cameraX;
         cameraLight.z = cameraZ;
