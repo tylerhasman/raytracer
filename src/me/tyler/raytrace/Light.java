@@ -1,9 +1,5 @@
 package me.tyler.raytrace;
 
-import javafx.scene.shape.Circle;
-
-import java.awt.*;
-
 public class Light {
 
     public float x, z;
